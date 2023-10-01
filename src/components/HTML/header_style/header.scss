@@ -1,0 +1,15 @@
+$bg_color: rgb(10, 204, 222);
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+.headerMain{
+    width: 100vw;
+    height: 80px;
+    background-color: $bg_color;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}

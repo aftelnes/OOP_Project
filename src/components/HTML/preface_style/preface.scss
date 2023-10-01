@@ -1,0 +1,28 @@
+$bg_prefaceMain_color: rgb(253, 255, 236);
+$bg_prefaceText_color: rgb(174, 233, 255);
+$shadow: rgba(0, 0, 0, 0.3);
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.prefaceMain{
+    width: 100vw;
+    height: 550px;
+    background-color: $bg_prefaceMain_color;
+    text-align: center;
+}
+
+.prefaceText{
+    display: inline-block;
+    width: 60vw;
+    height: 300px;
+    background-color: $bg_prefaceText_color;
+    border-radius: 60px;
+    text-align: center;
+    font-size: 28px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    margin-top: 50px;
+    box-shadow: 10px 8px 8px $shadow;
+}
