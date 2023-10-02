@@ -1,9 +1,11 @@
 import classes from './header_style/header.module.css'
+import LogoImage from './images/logo_image';
 
 const Header = function() {
     return(
         <header className={classes.headerMain}>
-            <h2>Вот тут логотип, а дальше кнопочки</h2>
+                <div className={classes.headerImageLogo}><LogoImage></LogoImage></div>
+                <div className={classes.headerSiteName}><h1>Наш сайт</h1></div>
         </header>
     )
 };

@@ -11,5 +11,20 @@ $bg_color: rgb(10, 204, 222);
     height: 80px;
     background-color: $bg_color;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    flex-direction: row;
+}
 
+.headerImageLogo {
+    padding: 5px;
+}
+
+.headerSiteName{
+    padding-left: 37%;
+    h1 {
+        padding-top: 15px;
+        font-size: 40px;
+        color: rgb(255, 255, 255);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
 }
