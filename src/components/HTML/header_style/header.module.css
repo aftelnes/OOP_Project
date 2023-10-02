@@ -6,7 +6,7 @@
 .headerMain {
   width: 100vw;
   height: 80px;
-  background-color: rgb(10, 204, 222);
+  background-color: rgb(174, 233, 255);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -29,4 +29,9 @@
   font-size: 40px;
   color: rgb(255, 255, 255);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.headerAboutUsBtn {
+  padding-left: 35%;
+  padding-top: 15px;
 }

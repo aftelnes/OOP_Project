@@ -1,0 +1,13 @@
+$MyButtonColor: rgb(138, 49, 226);
+$MyButtonTextColor: rgb(255, 255, 255);
+
+.myBtn{
+    padding: 5px 15px;
+    color: $MyButtonTextColor;
+    font-size: 30px;
+    background: transparent;
+    background-color: $MyButtonColor;
+    border: 1px solid $MyButtonColor;
+    cursor: pointer;
+    border-radius: 8px;
+}

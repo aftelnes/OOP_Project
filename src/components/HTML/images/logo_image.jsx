@@ -1,5 +1,5 @@
 import React from "react";
-import logo_img from './logo64.png'
+import logo_img from './logo64_2.png'
 
 
 const LogoImage = function() {
