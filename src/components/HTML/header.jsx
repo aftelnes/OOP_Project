@@ -6,7 +6,7 @@ import MyModal from '../modal/MyModal';
 
 const Header = function() {
 
-    const [modal, setModal] = useState(true);
+    const [modal, setModal] = useState(false);
 
     return(
         <header className={classes.headerMain}>
