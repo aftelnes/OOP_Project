@@ -1,8 +1,8 @@
-import classes from './header_style/header.module.css'
-import LogoImage from './images/logo_image';
+import classes from './Header_style/Header.module.css'
+import LogoImage from './Logo_image'
 import MyButton from '../buttons/MyButton';
 import { useState } from 'react';
-import MyModal from '../modal/MyModal';
+import MyModal from '../UI/Modal/MyModal';
 
 const Header = function() {
 

@@ -8,7 +8,7 @@
   height: 550px;
   background-color: rgb(253, 255, 236);
   text-align: center;
-  background: url("../images/background_foto.jpg");
+  background: url("/src/images/background_foto.jpg");
 }
 
 .prefaceText {

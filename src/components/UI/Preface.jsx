@@ -1,4 +1,4 @@
-import classes from './preface_style/preface.module.css'
+import classes from './Preface_style/Preface.module.css'
 
 const Preface = function() {
     return(

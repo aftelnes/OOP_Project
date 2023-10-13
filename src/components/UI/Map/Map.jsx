@@ -5,10 +5,11 @@ import { useEffect } from 'react';
 import classes from './MapStyles/Map.module.css'
 import { MapContext } from './MapContext';
 
-export const Map = () => {
-    
-    const [_, setMapInstance] = React.useContext(MapContext)
 
+export const Map = () => {
+
+    const [_, setMapInstance] = React.useContext(MapContext)
+    
     useEffect(() => {
         let map;
         load().then((mapglAPI) => {
@@ -18,16 +19,21 @@ export const Map = () => {
                 key: '77661842-aa62-4345-b828-82b1be08cdb7',
             });
         });
+        
+        
+
+
         // Сохраняем ссылку на карту
         setMapInstance(map);
+
         // Удаляем карту при размонтировании компонента
-        return () => map && map.destroy();
+        // return () => map && map.destroy();
     }, []);
 
     return (
-            <div className={classes.mapDivStyle}>
-                <MapWrapper />
-            </div>
+        <div className={classes.mapDivStyle}>
+            <MapWrapper />
+        </div>
     );
 };
 
