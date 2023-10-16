@@ -10,7 +10,7 @@ import { MapContext } from './MapContext';
 export const Map = () => {
 
     const [_, setMapInstance] = React.useContext(MapContext)
-    
+
     useEffect(() => {
         let map;
         load().then((mapglAPI) => {
@@ -18,8 +18,11 @@ export const Map = () => {
                 center: [38.971526, 45.024359],
                 zoom: 13,
                 key: '77661842-aa62-4345-b828-82b1be08cdb7',
+                trafficControl: 'topRight',
+                zoomControl: true,
+                scaleControl: true,
             });
-            
+
             const data = {
                 type: 'FeatureCollection',
                 features: [
@@ -32,10 +35,14 @@ export const Map = () => {
                             type: 'Polygon',
                             coordinates: [
                                 [
-                                    [38.97, 45.02],
                                     [38.98, 45.03],
-                                    [38.99, 45.04],
                                     [39.20, 45.05],
+                                    [39.22, 45.06],
+                                    [39.33, 45.10],
+                                    [39.44, 45.12],
+                                    [38.98, 45.03],
+
+
                                 ],
                             ],
                         },
@@ -65,15 +72,50 @@ export const Map = () => {
 
                 // Style of drawing object
                 style: {
-                    color: '#0000ff',
+                    color: '#ff0055',
                 },
             };
-            map.on('styleload', () => {
-                map.addLayer(layer);
-            }) 
+
+            // map.on('styleload', () => {
+            //     map.addLayer(layer);
+            // })
+
+            const circle = new mapglAPI.Circle(map, {
+                coordinates: map.getCenter(),
+                radius: 200,
+                color: '#ff000055',
+                maxZoom: 200,
+                strokeWidth: 2,
+                strokeColor: '#ffffff',
+            });
+
+            circle.on('click', () => {
+                alert('circleMarker click');
+            });
+
+
+            const polygon = new mapglAPI.Polygon(map, {
+                coordinates: [
+                    [
+                    [38.971526, 45.024359],
+                    [38.979854, 45.029999],
+                    [38.995526, 45.065659],
+                    [39.000000, 45.053459],
+                    [38.971526, 45.024359]
+                    ]
+                ],
+                color: '#990000',
+                strokeWidth: 3,
+                strokeColor: '#bb0000',
+            })
+            polygon.on('click', () => {
+                alert('Polygon click');
+            });
+
+            
 
         });
-        
+
 
 
         // Сохраняем ссылку на карту
