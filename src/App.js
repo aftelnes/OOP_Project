@@ -9,9 +9,9 @@ function App() {
       <Header></Header>
       <Preface></Preface>
       <div className={classes.map}>
-            <Map />
-        </div>
+        <Map />
       </div>
+    </div>
   );
 }
 
