@@ -5,18 +5,28 @@ import { useEffect } from 'react';
 import classes from './MapStyles/Map.module.css'
 import { MapContext } from './MapContext';
 import Circle from './helpers/Circle';
+import Polygon from './helpers/Polygon';
 
 //[38.971526, 45.024359]
 
 export const Map = () => {
 
     const [showCircles, setShowCircles] = useState(true);
-    function setOnOffCircles(){
+    function setOnOffCircles() {
         if (showCircles) {
             setShowCircles(false);
         }
-        else{
+        else {
             setShowCircles(true);
+        }
+    };
+    const [showPolygon, setShowPolygon] = useState(true);
+    function setOnOffPolygons(){
+        if (showPolygon) {
+            setShowPolygon(false);
+        }
+        else{
+            setShowPolygon(true);
         }
     }
     // function Marker(coord, mapglAPI, map) {
@@ -99,21 +109,15 @@ export const Map = () => {
             // })
 
             //=========================================Cicles================================================================
-
-            
-
+            const coord_ary = [[38.975668, 45.026359], [38.971968, 45.029359], [38.979668, 45.022359], [38.980668, 45.026359]]
             if (showCircles) {
-                const coord_ary  = [[38.975668, 45.026359],[38.971968, 45.029359],[38.979668, 45.022359],[38.980668, 45.026359]]
                 for (let i = 0; i < 4; i++) {
                     Circle(mapglAPI, map, coord_ary[i], 200, '#ff000055');
                 }
             }
 
-            
-
             Circle(mapglAPI, map, [38.971668, 45.025359], 200, '#ff000055');
             Circle(mapglAPI, map, [38.991968, 45.029659], 200, '#a4a00055');
-
 
             const circle = new mapglAPI.Circle(map, {
                 coordinates: map.getCenter(),
@@ -147,7 +151,54 @@ export const Map = () => {
             //     alert('Polygon click');
             // });
 
-            
+            //========================================Polygon====================================================================
+
+            const polygon_coord_ary = [
+                [
+                    [38.971526, 45.024359],
+                    [38.974894, 45.026999],
+                    [38.976576, 45.027659],
+                    [38.978626, 45.029959],
+                    [38.971526, 45.024359]
+                ],
+                [
+                    [38.981526, 45.034359],
+                    [38.984894, 45.036999],
+                    [38.986576, 45.037659],
+                    [38.988626, 45.039959],
+                    [38.981526, 45.034359]
+                ],
+                [
+                    [38.991526, 45.054359],
+                    [38.994894, 45.056999],
+                    [38.996576, 45.057659],
+                    [38.998626, 45.059959],
+                    [38.991526, 45.054359]
+                ],
+            ];
+            if (showPolygon) {
+                for (let i = 0; i < 3; i++) {
+                 Polygon(mapglAPI, map, polygon_coord_ary[i], '#a4a00055')   
+                }
+            }
+
+            // const polygon = new mapglAPI.Polygon(map, {
+            //     coordinates: [
+            //         [
+            //             [38.971526, 45.024359],
+            //             [38.974894, 45.026999],
+            //             [38.976576, 45.027659],
+            //             [38.978626, 45.029959],
+            //             [38.971526, 45.024359]
+            //         ]
+            //     ],
+            //     color: '#ff000055   ',
+            //     strokeWidth: 3,
+            //     strokeColor: '#ff000055',
+            // })
+
+            //===================================================================================================================
+
 
         });
 
@@ -158,12 +209,13 @@ export const Map = () => {
 
         // Удаляем карту при размонтировании компонента
         return () => map && map.destroy();
-    }, [showCircles]);
+    }, [showCircles, showPolygon]);
 
     return (
         <div className={classes.mapDivStyle}>
             <MapWrapper />
             <button onClick={setOnOffCircles}>Circles</button>
+            <button onClick={setOnOffPolygons}>Polygons</button>
         </div>
     );
 };
