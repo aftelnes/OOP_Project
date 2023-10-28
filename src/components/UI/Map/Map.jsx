@@ -6,7 +6,10 @@ import classes from './MapStyles/Map.module.css'
 import { MapContext } from './MapContext';
 import Circle from './helpers/Circle';
 import Polygon from './helpers/Polygon';
+import MyButton from '../../buttons/MyButton';
 
+import { CircleClass } from './helpers/Circle';
+import CreatePolygons from './helpers/Polygon';
 //[38.971526, 45.024359]
 
 export const Map = () => {
@@ -111,26 +114,19 @@ export const Map = () => {
             //=========================================Cicles================================================================
             const coord_ary = [[38.975668, 45.026359], [38.971968, 45.029359], [38.979668, 45.022359], [38.980668, 45.026359]]
             if (showCircles) {
-                for (let i = 0; i < 4; i++) {
-                    Circle(mapglAPI, map, coord_ary[i], 200, '#ff000055');
+                for (let i = 0; i < 4 ; i++) {
+                    let circle = new CircleClass(mapglAPI, map, coord_ary[i], 200, '#a4a00055');
+                    circle.CreateCircle();
                 }
             }
 
-            Circle(mapglAPI, map, [38.971668, 45.025359], 200, '#ff000055');
-            Circle(mapglAPI, map, [38.991968, 45.029659], 200, '#a4a00055');
 
-            const circle = new mapglAPI.Circle(map, {
-                coordinates: map.getCenter(),
-                radius: 200,
-                color: '#ff000055',
-                maxZoom: 200,
-                strokeWidth: 2,
-                strokeColor: '#ffffff',
-            });
 
-            circle.on('click', () => {
-                alert('circleMarker click');
-            });
+
+            //При нажатии на кружок вылазит информация
+            // circle.on('click', () => {
+            //     alert('circleMarker click');
+            // });
             //==============================================================================================================
 
             // const polygon = new mapglAPI.Polygon(map, {
@@ -178,7 +174,7 @@ export const Map = () => {
             ];
             if (showPolygon) {
                 for (let i = 0; i < 3; i++) {
-                 Polygon(mapglAPI, map, polygon_coord_ary[i], '#a4a00055')   
+                 let pol1 = CreatePolygons(1, mapglAPI, map, polygon_coord_ary[i], '#a4a00022');
                 }
             }
 
@@ -214,8 +210,8 @@ export const Map = () => {
     return (
         <div className={classes.mapDivStyle}>
             <MapWrapper />
-            <button onClick={setOnOffCircles}>Circles</button>
-            <button onClick={setOnOffPolygons}>Polygons</button>
+            <MyButton onClick={setOnOffCircles} style={{fontSize: 25}}>Circles</MyButton>
+            <MyButton onClick={setOnOffPolygons} style={{fontSize: 25, marginLeft: 3}}>Polygons</MyButton>
         </div>
     );
 };

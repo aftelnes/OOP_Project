@@ -20,8 +20,9 @@ $bg_color: rgb(0, 33, 45);
 }
 
 .headerSiteName{
-    padding-left: 37%;
+    padding-left: 35vw;
     h1 {
+        width: 300px;
         padding-top: 15px;
         font-size: 40px;
         color: rgb(255, 255, 255);
@@ -30,6 +31,6 @@ $bg_color: rgb(0, 33, 45);
 }
 
 .headerAboutUsBtn{
-    padding-left: 35%;
+    padding-left: 30vw;
     padding-top: 15px;
 }

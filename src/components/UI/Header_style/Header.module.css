@@ -22,9 +22,10 @@
 }
 
 .headerSiteName {
-  padding-left: 37%;
+  padding-left: 35vw;
 }
 .headerSiteName h1 {
+  width: 300px;
   padding-top: 15px;
   font-size: 40px;
   color: rgb(255, 255, 255);
@@ -32,6 +33,6 @@
 }
 
 .headerAboutUsBtn {
-  padding-left: 35%;
+  padding-left: 30vw;
   padding-top: 15px;
 }
