@@ -2,12 +2,23 @@ $bg_color: rgb(0, 33, 45);
 
 
 .mapDivStyle {
-    width: 100vw;
-    height: 600px;
-    margin: 0;
-    background-color: $bg_color;
-    padding-left: 20px;
-    padding-top: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-  }
+  width: 100vw;
+  height: 600px;
+  margin: 0;
+  background-color: $bg_color;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.resetRulerBtn {
+  padding: 4px 10px;
+  background: #00a81f;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.5);
+  border: none;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}

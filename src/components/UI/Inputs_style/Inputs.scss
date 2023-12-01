@@ -1,0 +1,15 @@
+$bg_inputsMain_color: rgb(0, 33, 45);
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.inputsMain {
+  width: 100vw;
+  border-radius: 15px;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  padding-top: 5vw;
+  background: linear-gradient(rgb(0, 33, 45), rgb(52, 118, 189)) fixed;
+}

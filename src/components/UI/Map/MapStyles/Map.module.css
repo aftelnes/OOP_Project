@@ -8,3 +8,15 @@
   padding-right: 20px;
   padding-bottom: 20px;
 }
+
+.resetRulerBtn {
+  padding: 4px 10px;
+  background: #00a81f;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.5);
+          box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.5);
+  border: none;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
