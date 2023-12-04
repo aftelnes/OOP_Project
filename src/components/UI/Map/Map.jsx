@@ -10,11 +10,11 @@ import { observer } from "mobx-react-lite";
 import { Button } from "@mantine/core";
 
 import { CircleClass } from "./helpers/Circle";
-import { MarkerClass } from "./helpers/Marker";
 import CreatePolygons from "./helpers/Polygon";
 //[38.971526, 45.024359]
 
-import Requests from "./helpers/Requests";
+import mainStore from "../../../store/mainStore";
+
 
 export const Map = observer(() => {
   const [showCircles, setShowCircles] = useState(true);
@@ -73,24 +73,14 @@ export const Map = observer(() => {
       setShowMarkerClicked(true);
     }
   }
-  function MarkerClickFunc(mapglAPI, map) {
-    map.on("click", (e) => {
-      console.log("LOL");
-      console.log(`targetData = ${e.lngLat} :: ${e.lngLat[0]}`);
-      let marker = new MarkerClass(mapglAPI, map, [e.lngLat[0], e.lngLat[1]]);
-      marker.CreateMarker();
-    });
-  }
-
-  // function Marker(coord, mapglAPI, map) {
-  //     const circle = new mapglAPI.Circle(map, {
-  //         coordinates: coord,
-  //         radius: 200,
-  //         color: '#ff000055',
-  //         maxZoom: 200,
-  //         strokeWidth: 2,
-  //         strokeColor: '#ffffff',
-  //     });
+  //!При клики ставит маркер на точку
+  // function MarkerClickFunc(mapglAPI, map) {
+  //   map.on("click", (e) => {
+  //     console.log("LOL");
+  //     console.log(`targetData = ${e.lngLat} :: ${e.lngLat[0]}`);
+  //     let marker = new MarkerClass(mapglAPI, map, [e.lngLat[0], e.lngLat[1]]);
+  //     marker.CreateMarker();
+  //   });
   // }
 
   const [_, setMapInstance] = React.useContext(MapContext);
@@ -106,12 +96,30 @@ export const Map = observer(() => {
         scaleControl: true,
       });
 
-      //Отрисовка координат пользователя
 
       //Ruler
       if (showRuler) {
         RulerFunc(mapglAPI, map);
       }
+
+      let selectedIds = [];
+      map.on("click", (e) => {
+        console.log(`Coords = ${e.lngLat}`);
+        mainStore.setCoords(e.lngLat[0], e.lngLat[1]);
+        if (!e.target) {
+          return;
+        }
+
+        const { id } = e.target;
+
+        if (selectedIds.includes(id)) {
+          selectedIds = selectedIds.filter((i) => i !== id);
+        } else {
+          selectedIds.push(id);
+        }
+
+        map.setSelectedObjects(selectedIds);
+      });
 
       // map.on("click", (e) => {
       //   console.log(`targetData = ${e.lngLat} :: ${e.lngLat[0]}`);
@@ -119,9 +127,10 @@ export const Map = observer(() => {
       //   marker.CreateMarker();
       // });
 
-      if (showMarkerClicked) {
-        MarkerClickFunc(mapglAPI, map);
-      }
+      //!Для поставноки маркера при нажаттии на карту
+      // if (showMarkerClicked) {
+      //   MarkerClickFunc(mapglAPI, map);
+      // }
 
       const data = {
         type: "FeatureCollection",
