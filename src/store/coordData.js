@@ -1,35 +1,36 @@
 import { makeAutoObservable } from "mobx";
 
-class UserCoords{
+class UserCoords {
+  latitude_coord = 45.024359;
+  longitude_coord = 38.971526;
+  radius = 10;
 
-    latitude_coord = 45.024359
-    longitude_coord = 38.971526
-    radius = 10
+  findBtnClicked = false;
 
-    findBtnClicked = false
+  constructor() {
+    makeAutoObservable(this);
+  }
 
-    constructor(){
-        makeAutoObservable(this);
-    };
+  setLatitudeCoord(value) {
+    this.latitude_coord = value;
+    console.log(`this.latitude_coord = ${this.latitude_coord}`);
+  }
+  setLongitudeCoord(value) {
+    this.longitude_coord = value;
+    console.log(`this.longitude_coord = ${this.longitude_coord}`);
+  }
+  setRadius(value) {
+    this.radius = value;
+  }
 
-    setLatitudeCoord(value){
-        this.latitude_coord = value;
-    }
-    setLongitudeCoord(value){
-        this.longitude_coord = value;
-    }
-    setRadius(value){
-        this.radius = value
-    }
+  findBtnWasClicked() {
+    this.findBtnClicked = true;
+    console.log("Changed btn value");
+  }
 
-    findBtnWasClicked(){
-        this.findBtnClicked = true;
-        console.log('Changed btn value')
-    }
+  showAll() {
+    console.log(this.latitude_coord, this.longitude_coord, this.radius);
+  }
+}
 
-    showAll(){
-        console.log(this.latitude_coord, this.longitude_coord, this.radius)
-    }
-};
-
-export default new UserCoords;  
+export default new UserCoords();

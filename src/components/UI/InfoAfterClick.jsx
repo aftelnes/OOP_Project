@@ -6,13 +6,16 @@ import mainStore from "../../store/mainStore";
 const InfoAfterClick = observer(() => {
   return (
     <div className={classes.coordInputMain}>
-      {mainStore.latitude_coord != 0 && mainStore.longitude_coord != 0 ? (
-        <div>
-          Long: {mainStore.longitude_coord} | Latt {mainStore.latitude_coord}
-        </div>
-      ) : (
-        <div>CATS</div>
-      )}
+      <div>
+        <div>Адрес: {mainStore.address}</div>
+        <div>Кол-во жителей: {mainStore.people}</div>
+        <div>Общая площадь: {mainStore.square} кв.м</div>
+        <div>Жилая площадь: {mainStore.live_square} кв.м</div>
+        <div>Кол-во этажей: {mainStore.floors}</div>
+        <div>Район: {mainStore.area_id}</div>
+        <div>Долгота: {mainStore.longitude_coord}</div>
+        <div>Широта: {mainStore.latitude_coord}</div>
+      </div>
     </div>
   );
 });

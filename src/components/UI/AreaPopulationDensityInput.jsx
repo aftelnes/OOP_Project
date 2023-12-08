@@ -9,10 +9,19 @@ const AreaPopulationDensityInput = () => {
   async function getAreaPopulationDensity(id) {
     try {
       const response = await axios.get(
-        `http://213.171.3.197:8000/api/areas/${id}`
+        `http://213.171.3.197:8000/api/full_data`,
+        {
+          params: {
+            lng: "39.00393",
+            latt: "45.01251",
+          },
+        }
       );
-      console.log(`Response = ${response.data.peoples}`);
-      setAreaPopulationDensity(response.data.peoples);
+      console.log(`Response = ${response.data.people}`);
+      console.log(`Response = ${response.data.square}`);
+      console.log(`Response = ${response.data.address}`);
+      console.log(`Response = ${response.data.live_square}`);
+      // setAreaPopulationDensity(response.data);
     } catch (error) {
       console.log(`ERROR = ${error}`);
     }

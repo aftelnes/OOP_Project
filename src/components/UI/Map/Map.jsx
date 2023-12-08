@@ -13,8 +13,8 @@ import { CircleClass } from "./helpers/Circle";
 import CreatePolygons from "./helpers/Polygon";
 //[38.971526, 45.024359]
 
+import getAreaPopulationDensity from "./helpers/request";
 import mainStore from "../../../store/mainStore";
-
 
 export const Map = observer(() => {
   const [showCircles, setShowCircles] = useState(true);
@@ -26,7 +26,7 @@ export const Map = observer(() => {
     }
   }
 
-  const [showPolygon, setShowPolygon] = useState(true);
+  const [showPolygon, setShowPolygon] = useState(false);
   function setOnOffPolygons() {
     if (showPolygon) {
       setShowPolygon(false);
@@ -96,6 +96,15 @@ export const Map = observer(() => {
         scaleControl: true,
       });
 
+      const marker = new mapglAPI.Marker(map, {
+        coordinates: [39.02983, 45.00829],
+      });
+      const marker1 = new mapglAPI.Marker(map, {
+        coordinates: [39.0027, 45.0129],
+      });
+      const marker2 = new mapglAPI.Marker(map, {
+        coordinates: [39.0298, 45.0082],
+      });
 
       //Ruler
       if (showRuler) {
@@ -104,8 +113,13 @@ export const Map = observer(() => {
 
       let selectedIds = [];
       map.on("click", (e) => {
-        console.log(`Coords = ${e.lngLat}`);
-        mainStore.setCoords(e.lngLat[0], e.lngLat[1]);
+        const lngToRequest = JSON.stringify(e.lngLat[0]).slice(0, 7);
+        const lattToRequest = JSON.stringify(e.lngLat[1]).slice(0, 7);
+        console.log(
+          `lngToRequest = ${lngToRequest} and lattToRequest = ${lattToRequest}`
+        );
+        getAreaPopulationDensity(lngToRequest, lattToRequest);
+        mainStore.setCoords(lngToRequest, lattToRequest);
         if (!e.target) {
           return;
         }

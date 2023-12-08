@@ -7,7 +7,6 @@ const Inputs = () => {
   return (
     <div className={classes.inputsMain}>
       <CoordInput></CoordInput>
-      <AreaPopulationDensityInput />
       <InfoAfterClick />
     </div>
   );

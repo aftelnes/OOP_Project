@@ -13,9 +13,7 @@ function App() {
         <Header></Header>
         <Preface></Preface>
         <Inputs></Inputs>
-        <div className={classes.map}>
-          <Map />
-        </div>
+        <div className={classes.map}><Map /></div>
       </MantineProvider>
     </div>
   );
